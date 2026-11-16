@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Add Product{% endblock title %}
+
+{% block content %}
+
+<h2>Add Product</h2>
+
+<form method="post" action="/products/new" enctype="multipart/form-data">
+    <p>
+        <label>Name</label><br>
+        <input type="text" name="name" required maxlength="40">
+    </p>
+    <p>
+        <label>Price</label><br>
+        <input type="number" name="price" step="0.01" min="0" required>
+    </p>
+    <p>
+        <label>Stock</label><br>
+        <input type="number" name="stock" min="0" value="0">
+    </p>
+    <p>
+        <label>Image</label><br>
+        <input type="file" name="image" accept="image/*">
+    </p>
+    <button type="submit">Add</button>
+</form>
+
+<a href="/products" class="back-link">&larr; Back to products</a>
+
+{% endblock content %}

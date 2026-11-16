@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}Products{% endblock title %}
+
+{% block content %}
+
+<h2>Products</h2>
+<a href="/products/new">+ Add product</a>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in products %}
+        <tr>
+            <td><a href="/products/{{ p.id }}">{{ p.name }}</a></td>
+            <td>{{ p.price }}</td>
+            <td>{{ p.stock }}</td>
+            <td><img src="{{ url_for('static', filename='images/' ~ p.imgUrl) }}" width="80"></td>
+            <td>
+                <form method="post" action="/products/{{ p.id }}/delete"
+                    onsubmit="return confirm('Delete {{ p.name }}?')">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

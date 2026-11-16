@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{% block title %}{% endblock title %} | Holy moses</title>    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='image.png') }}">
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>Holy moses</h1>
+        </header>
+        <aside>
+            <a href="/home" class="{{ 'active' if request.path == '/home' else '' }}">בית</a>
+            <br><br>
+            <a href="/products" class="{{ 'active' if request.path.startswith('/products') else '' }}">מוצרים</a>
+            <br><br>
+            <a href="/about" class="{{ 'active' if request.path == '/about' else '' }}">אודות</a>
+        </aside>
+        <main>
+            {% block content %}Holy moses{% endblock content %}
+        </main>
+        <footer>
+            <p>&copy; 2026 My Site</p>
+        </footer>
+    </div>
+</body>
+
+</html>
